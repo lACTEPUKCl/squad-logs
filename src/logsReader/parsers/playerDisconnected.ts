@@ -3,7 +3,7 @@ import { TPlayerDisconnected } from '../../types';
 
 export const playerDisconnected = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogNet: UChannel::Close: Sending CloseBunch\. ChIndex == [0-9]+\. Name: \[UChannel\] ChIndex: [0-9]+, Closing: [0-9]+ \[UNetConnection\] RemoteAddr: ([\d.]+):[\d]+, Name: EOSIpNetConnection_[0-9]+, Driver: GameNetDriver EOSNetDriver_[0-9]+, IsServer: YES, PC: ([^\s]+), Owner: [^\s]+, UniqueId: RedpointEOS:([\d\w]+)/,
+    /^\[([0-9.:-]+)]\[\s*([0-9]*)]LogNet: UChannel::Close: Sending CloseBunch\. ChIndex == \d+\. Name: \[UChannel] ChIndex: \d+, Closing: \d+ \[UNetConnection] RemoteAddr: ([\d.]+):\d+, Name: (?:RedpointEOS|EOS)IpNetConnection_\d+, Driver: .*?(?:RedpointEOS|EOS)NetDriver_\d+.*?, IsServer: YES, PC: ([^\s,]+|NULL), Owner: [^\s,]+, UniqueId: (?:RedpointEOS|EOS):([\dA-Fa-f]+)/,
   );
 
   if (matches) {
