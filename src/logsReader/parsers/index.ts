@@ -19,6 +19,8 @@ import { squadCreated } from './squadCreated';
 import { vehicleDamaged } from './vehicleDamaged';
 import { applyExplosiveDamage } from './applyExplosiveDamage';
 import { notifyAcceptingConnection } from './NotifyAcceptingConnection';
+import { playfabRoundSummary } from './roundSummary';
+import { grenadeSpawned } from './grenadeSpawned';
 
 const parsers = [
   adminBroadcast,
@@ -40,7 +42,9 @@ const parsers = [
   vehicleDamaged,
   serverTickRate,
   applyExplosiveDamage,
-  notifyAcceptingConnection
+  notifyAcceptingConnection,
+  playfabRoundSummary,
+  grenadeSpawned,
 ];
 
 export const parseLine = (line: string, emitter: EventEmitter) => {

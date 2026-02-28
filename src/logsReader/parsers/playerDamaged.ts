@@ -3,7 +3,7 @@ import { TPlayerDamaged } from '../../types';
 
 export const playerDamaged = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: Player:(.+) ActualDamage=([0-9.]+) from (.+) \(Online IDs: EOS: ([0-9a-f]{32}) steam: (\d{17}) \| Player Controller ID: ([^ ]+)\)caused by ([A-z_0-9-]+)_C/,
+    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: Player: (.+) ActualDamage=([0-9.]+) from (.+) \(Online IDs: EOS: ([0-9a-f]{32}) steam: (\d{17}) \| Player Controller ID: ([^ ]+)\)caused by ([A-z_0-9-]+)_C/,
   );
 
   if (matches) {

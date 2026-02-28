@@ -122,8 +122,17 @@ export type TDeployableDamaged = {
   damage: number;
   weapon: string;
   name: string;
-  damageType: string;
+  eosID: string;
+  steamID: string;
   healthRemaining: string;
+  event: string;
+};
+
+export type TGrenadeSpawned = {
+  raw: string;
+  time: string;
+  chainID: string;
+  instigator: string;
   event: string;
 };
 
@@ -232,4 +241,27 @@ export type TNotifyAcceptingConnection = {
   ip: string;
   port: string;
   event: string;
+};
+
+export type TPlayfabRoundSummary = {
+  raw: string;
+  time: string;
+  chainID: string;
+  event: string;
+  sessionId: string;
+  map: string;
+  layer: string;
+  gameMode: string;
+  durationSec: number;
+  winFaction: string;
+  winTeamIndex: number;
+  winTickets: number;
+  winPlayerCount: number;
+  loseFaction: string;
+  loseTickets: number;
+  losePlayerCount: number;
+  licensed: boolean;
+  detailsTeam1?: Record<string, number>;
+  detailsTeam2?: Record<string, number>;
+  modsList: string[];
 };
