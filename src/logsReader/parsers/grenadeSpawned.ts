@@ -3,7 +3,7 @@ import { TGrenadeSpawned } from '../../types';
 
 export const grenadeSpawned = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquadTrace: \[DedicatedServer](?:ASQVehicleSeat::)?ServerSpawnGrenade_Implementation\(\): Grenade Spawned: Instigator=(.+) SpawnLocation=V\(X=(.+), Y=(.+), Z=(.+)/,
+    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquadTrace: \[DedicatedServer](?:ASQVehicleSeat::)?ServerSpawnGrenade_Implementation\(\): Grenade Spawned: Instigator=(.+) SpawnLocation=V\((X=[^)]*)\)/,
   );
 
   if (matches) {
