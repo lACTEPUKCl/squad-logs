@@ -7,13 +7,17 @@
   "author": "I-Am Alone <iamalone9828@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "start": "nodemon src/index.ts",
     "build": "rollup -c rollup.config.js",
     "lint:check": "tsc --noEmit && eslint --ext .ts src/ && prettier src/ --check --ignore-unknown",
     "lint:format": "eslint --fix --ext .ts src/ && prettier src/ --write --ignore-unknown",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn build"
+    "postinstall": "yarn build",
+    "prepack": "yarn build"
   },
   "dependencies": {
     "chalk": "^5.3.0",

@@ -1,0 +1,24 @@
+export declare const LogsReaderEvents: {
+    ADMIN_BROADCAST: string;
+    DEPLOYABLE_DAMAGED: string;
+    GRENADE_SPAWNED: string;
+    EXPLOSIVE_DAMAGED: string;
+    NEW_GAME: string;
+    PLAYER_CONNECTED: string;
+    PLAYER_ACCEPTING_CONNECTION: string;
+    PLAYER_DISCONNECTED: string;
+    PLAYER_DAMAGED: string;
+    PLAYER_DIED: string;
+    PLAYER_POSSESS: string;
+    PLAYER_UNPOSSESS: string;
+    PLAYER_REVIVED: string;
+    PLAYER_SUICIDE: string;
+    PLAYER_WOUNDED: string;
+    ROUND_ENDED: string;
+    ROUND_TICKETS: string;
+    ROUND_WINNER: string;
+    SQUAD_CREATED: string;
+    VEHICLE_DAMAGED: string;
+    TICK_RATE: string;
+    ROUND_SUMMARY: string;
+};
