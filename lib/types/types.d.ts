@@ -122,6 +122,7 @@ export type TGrenadeSpawned = {
     time: string;
     chainID: string;
     instigator: string;
+    location: string;
     event: string;
 };
 export type TApplyExplosiveDamage = {
