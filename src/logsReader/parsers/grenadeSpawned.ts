@@ -11,7 +11,7 @@ export const grenadeSpawned = (line: string) => {
       raw: matches[0],
       time: matches[1],
       chainID: matches[2],
-      instigator: matches[3],
+      possess: matches[3],
       location: matches[4],
       event: LogsReaderEvents.GRENADE_SPAWNED,
     };
