@@ -3,7 +3,7 @@ import { TTickRate } from '../../types';
 
 export const serverTickRate = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: USQGameState: Server Tick Rate: ([0-9.]+)/,
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: USQGameState: Server Tick Rate: ([0-9.]+)/,
   );
 
   if (matches) {

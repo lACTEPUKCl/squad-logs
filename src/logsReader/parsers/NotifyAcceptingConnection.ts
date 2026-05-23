@@ -3,7 +3,7 @@ import { TNotifyAcceptingConnection } from '../../types';
 
 export const notifyAcceptingConnection = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogNet: NotifyAcceptingConnection accepted from: (\d{1,3}(?:\.\d{1,3}){3}):(\d+)$/,
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogNet: NotifyAcceptingConnection accepted from: (\d{1,3}(?:\.\d{1,3}){3}):(\d+)$/,
   );
 
   if (matches) {

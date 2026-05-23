@@ -3,7 +3,7 @@ import { TDeployableDamaged } from '../../types';
 
 export const deployableDamaged = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquadTrace: \[DedicatedServer](?:ASQDeployable::)?TakeDamage\(\): ([A-Za-z0-9_]+_C_[0-9]+): ([0-9.]+) damage taken by causer ([A-Za-z0-9_]+_C_[0-9]+) instigator (.+?) \(Online IDs: EOS: ([0-9a-fA-F]+) steam: ([0-9]+)\) health remaining ([0-9.]+)/,
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogSquadTrace: \[DedicatedServer](?:ASQDeployable::)?TakeDamage\(\): ([A-Za-z0-9_]+_C_[0-9]+): ([0-9.]+) damage taken by causer ([A-Za-z0-9_]+_C_[0-9]+) instigator (.+?) \(Online IDs: EOS: ([0-9a-fA-F]+) steam: ([0-9]+)\) health remaining ([0-9.]+)/,
   );
 
   if (matches) {

@@ -3,7 +3,7 @@ import { TRoundEnded } from '../../types';
 
 export const roundEnded = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogGameState: Match State Changed from InProgress to WaitingPostMatch/,
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogGameState: Match State Changed from InProgress to WaitingPostMatch/,
   );
 
   if (matches) {

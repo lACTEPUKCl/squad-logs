@@ -14,16 +14,25 @@ export const playfabRoundSummary = (() => {
   let escaped = false;
 
   const startRe =
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogODKPlayFabProvider: .*?Payload:\s*(\{.*)?$/;
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogODKPlayFabProvider: .*?Payload:\s*(\{.*)?$/;
 
   function feed(chunk: string) {
     buf.push(chunk);
     for (let i = 0; i < chunk.length; i++) {
       const ch = chunk[i];
 
-      if (escaped) { escaped = false; continue; }
-      if (ch === '\\') { escaped = true; continue; }
-      if (ch === '"') { inString = !inString; continue; }
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (ch === '\\') {
+        escaped = true;
+        continue;
+      }
+      if (ch === '"') {
+        inString = !inString;
+        continue;
+      }
       if (!inString) {
         if (ch === '{') depth++;
         else if (ch === '}') depth--;

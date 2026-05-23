@@ -3,7 +3,7 @@ import { TPlayerSuicide } from '../../types';
 
 export const playerSuicide = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: Warning: Suicide (.+)/,
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: Warning: Suicide (.+)/,
   );
 
   if (matches) {

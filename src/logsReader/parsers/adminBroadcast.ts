@@ -3,7 +3,7 @@ import { TAdminBroadcast } from '../../types';
 
 export const adminBroadcast = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: ADMIN COMMAND: Message broadcasted <(.+)> from (.+)/,
+    /\[([0-9.:-]+)]\[([ 0-9]*)]LogSquad: ADMIN COMMAND: Message broadcasted <(.+)> from (.+)/,
   );
 
   if (matches) {

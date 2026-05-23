@@ -3,7 +3,7 @@ import { TPlayerDied } from '../../types';
 
 export const playerDied = (line: string) => {
   const matches = line.match(
-    /^\[([0-9.:-]+)]\[\s*([0-9]+)]LogSquadTrace:\s*\[DedicatedServer]\s*(?:ASQSoldier::)?Die\(\):\s*Player:(.+?)\s+KillingDamage=(-?[0-9.]+)\s+from\s+([^\s]+)\s+\(Online IDs:\s+(?:(?:EOS:\s*([A-Fa-f0-9]{32})\s+steam:\s*(\d{17}))|INVALID)\s+\|\s+Contoller ID:\s*([A-Za-z0-9_]+|None)\)\s+caused by\s+(.+)$/,
+    /\[([0-9.:-]+)]\[\s*([0-9]+)]LogSquadTrace:\s*\[DedicatedServer]\s*(?:ASQSoldier::)?Die\(\):\s*Player:(.+?)\s+KillingDamage=(-?[0-9.]+)\s+from\s+([^\s]+)\s+\(Online IDs:\s+(?:(?:EOS:\s*([A-Fa-f0-9]{32})\s+steam:\s*(\d{17}))|INVALID)\s+\|\s+Contoller ID:\s*([A-Za-z0-9_]+|None)\)\s+caused by\s+(.+)$/,
   );
 
   if (matches) {
