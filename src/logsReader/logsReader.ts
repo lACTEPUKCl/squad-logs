@@ -159,6 +159,37 @@ export class LogsReader extends EventEmitter {
     parseLine(line, this);
   }
 
+  // Буфер для склейки многострочных записей лога.
+  #pending = '';
+  #flushTimer: NodeJS.Timeout | null = null;
+
+  // Строка-запись начинается с таймстампа [YYYY.MM.DD-HH.MM.SS:mmm].
+  // Строки без него — продолжение предыдущей записи (многострочные
+  // сообщения warn/broadcast и т.п.) → приклеиваем к текущей.
+  #feedLine(line: string) {
+    const isEntryStart =
+      /\[\d{4}\.\d{2}\.\d{2}-\d{2}\.\d{2}\.\d{2}:\d{3}\]/.test(line);
+
+    if (isEntryStart) {
+      if (this.#pending) this.#parseLine(this.#pending);
+      this.#pending = line;
+    } else if (this.#pending) {
+      this.#pending += ' ' + line;
+    } else {
+      this.#pending = line;
+    }
+
+    // Дебаунс: если новых строк нет ~1с — распарсить накопленную запись
+    // (чтобы последняя запись не зависала во время тишины).
+    if (this.#flushTimer) clearTimeout(this.#flushTimer);
+    this.#flushTimer = setTimeout(() => {
+      if (this.#pending) {
+        this.#parseLine(this.#pending);
+        this.#pending = '';
+      }
+    }, 1000);
+  }
+
   #parseConfigUsers(data: string) {
     const groups: { [key in string]: string[] } = {};
     const admins: { [key in string]: { [key in string]: true } } = {};
@@ -246,7 +277,7 @@ export class LogsReader extends EventEmitter {
                 });
 
                 rl.on('line', (line: string) => {
-                  this.#parseLine(line);
+                  this.#feedLine(line);
                 });
 
                 rl.on('close', () => {
@@ -284,7 +315,7 @@ export class LogsReader extends EventEmitter {
       this.emit('connected');
 
       this.tail.on('line', (data) => {
-        this.#parseLine(data);
+        this.#feedLine(data);
       });
     } catch (error) {
       this.logger.error('Connection lost');

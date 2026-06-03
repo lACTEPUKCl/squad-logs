@@ -266,3 +266,116 @@ export type TPlayfabRoundSummary = {
   detailsTeam2?: Record<string, number>;
   modsList: string[];
 };
+
+export type TFobPlaced = {
+  raw: string;
+  time: string;
+  chainID: string;
+  teamID: string;
+  x: string;
+  y: string;
+  z: string;
+  radioId?: string;
+  isMain: boolean;
+  event: string;
+};
+
+export type TRallyPlaced = {
+  raw: string;
+  time: string;
+  chainID: string;
+  teamID: string;
+  x: string;
+  y: string;
+  z: string;
+  event: string;
+};
+
+export type TPlayerRespawn = {
+  raw: string;
+  time: string;
+  chainID: string;
+  playerController: string;
+  spawn: string;
+  role: string;
+  event: string;
+};
+
+export type TVehicleSeatChange = {
+  raw: string;
+  time: string;
+  chainID: string;
+  action: 'enter' | 'exit';
+  name: string;
+  eosID: string;
+  steamID: string;
+  vehicle: string;
+  seatNumber: string;
+  event: string;
+};
+
+export type TEacAction = {
+  raw: string;
+  time: string;
+  chainID: string;
+  client: string;
+  action: string;
+  actionReason: string;
+  details: string;
+  event: string;
+};
+
+export type TPlayerStateChanged = {
+  raw: string;
+  time: string;
+  chainID: string;
+  name: string;
+  eosID: string;
+  steamID: string;
+  oldState: string;
+  newState: string;
+  event: string;
+};
+
+export type TMatchResult = {
+  raw: string;
+  time: string;
+  chainID: string;
+  teamID: string;
+  faction: string;
+  subfaction: string;
+  result: 'won' | 'lost';
+  tickets: string;
+  layer: string;
+  level: string;
+  event: string;
+};
+
+export type TNextLayerSet = {
+  raw: string;
+  time: string;
+  chainID: string;
+  action: 'set' | 'change';
+  layer: string;
+  team1Faction: string;
+  team2Faction: string;
+  team1Subfaction?: string;
+  team2Subfaction?: string;
+  event: string;
+};
+
+export type TAdminAction = {
+  raw: string;
+  time: string;
+  chainID: string;
+  action: 'kick' | 'forceTeamChange' | 'disband' | 'warn' | 'autoBan';
+  eosID?: string;
+  steamID?: string;
+  name?: string;
+  message?: string;
+  reason?: string;
+  squadID?: string;
+  teamID?: string;
+  squadName?: string;
+  event: string;
+};

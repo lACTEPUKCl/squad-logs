@@ -21,8 +21,20 @@ import { applyExplosiveDamage } from './applyExplosiveDamage';
 import { notifyAcceptingConnection } from './NotifyAcceptingConnection';
 import { playfabRoundSummary } from './roundSummary';
 import { grenadeSpawned } from './grenadeSpawned';
+import { fobPlaced } from './fobPlaced';
+import { fobRadioCapture } from './fobRadio';
+import { rallyPlaced } from './rallyPlaced';
+import { playerRespawn } from './playerRespawn';
+import { vehicleSeat } from './vehicleSeat';
+import { eacAction } from './eacAction';
+import { playerStateChanged } from './playerStateChanged';
+import { matchResult } from './matchResult';
+import { nextLayer } from './nextLayer';
+import { adminAction } from './adminAction';
 
 const parsers = [
+  fobRadioCapture,
+  vehicleSeat,
   adminBroadcast,
   newGame,
   playerConnected,
@@ -45,6 +57,14 @@ const parsers = [
   notifyAcceptingConnection,
   playfabRoundSummary,
   grenadeSpawned,
+  fobPlaced,
+  rallyPlaced,
+  playerRespawn,
+  eacAction,
+  playerStateChanged,
+  matchResult,
+  nextLayer,
+  adminAction,
 ];
 
 export const parseLine = (line: string, emitter: EventEmitter) => {

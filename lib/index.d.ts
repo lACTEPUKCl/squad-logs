@@ -26,6 +26,15 @@ declare const LogsReaderEvents: {
     VEHICLE_DAMAGED: string;
     TICK_RATE: string;
     ROUND_SUMMARY: string;
+    FOB_PLACED: string;
+    RALLY_PLACED: string;
+    PLAYER_RESPAWN: string;
+    VEHICLE_SEAT_CHANGE: string;
+    EAC_ACTION: string;
+    PLAYER_STATE_CHANGED: string;
+    MATCH_RESULT: string;
+    NEXT_LAYER_SET: string;
+    ADMIN_ACTION: string;
 };
 
 declare const initLogger: (id: number, enabled: boolean) => {
@@ -280,6 +289,110 @@ type TPlayfabRoundSummary = {
     detailsTeam2?: Record<string, number>;
     modsList: string[];
 };
+type TFobPlaced = {
+    raw: string;
+    time: string;
+    chainID: string;
+    teamID: string;
+    x: string;
+    y: string;
+    z: string;
+    radioId?: string;
+    isMain: boolean;
+    event: string;
+};
+type TRallyPlaced = {
+    raw: string;
+    time: string;
+    chainID: string;
+    teamID: string;
+    x: string;
+    y: string;
+    z: string;
+    event: string;
+};
+type TPlayerRespawn = {
+    raw: string;
+    time: string;
+    chainID: string;
+    playerController: string;
+    spawn: string;
+    role: string;
+    event: string;
+};
+type TVehicleSeatChange = {
+    raw: string;
+    time: string;
+    chainID: string;
+    action: 'enter' | 'exit';
+    name: string;
+    eosID: string;
+    steamID: string;
+    vehicle: string;
+    seatNumber: string;
+    event: string;
+};
+type TEacAction = {
+    raw: string;
+    time: string;
+    chainID: string;
+    client: string;
+    action: string;
+    actionReason: string;
+    details: string;
+    event: string;
+};
+type TPlayerStateChanged = {
+    raw: string;
+    time: string;
+    chainID: string;
+    name: string;
+    eosID: string;
+    steamID: string;
+    oldState: string;
+    newState: string;
+    event: string;
+};
+type TMatchResult = {
+    raw: string;
+    time: string;
+    chainID: string;
+    teamID: string;
+    faction: string;
+    subfaction: string;
+    result: 'won' | 'lost';
+    tickets: string;
+    layer: string;
+    level: string;
+    event: string;
+};
+type TNextLayerSet = {
+    raw: string;
+    time: string;
+    chainID: string;
+    action: 'set' | 'change';
+    layer: string;
+    team1Faction: string;
+    team2Faction: string;
+    team1Subfaction?: string;
+    team2Subfaction?: string;
+    event: string;
+};
+type TAdminAction = {
+    raw: string;
+    time: string;
+    chainID: string;
+    action: 'kick' | 'forceTeamChange' | 'disband' | 'warn' | 'autoBan';
+    eosID?: string;
+    steamID?: string;
+    name?: string;
+    message?: string;
+    reason?: string;
+    squadID?: string;
+    teamID?: string;
+    squadName?: string;
+    event: string;
+};
 
 declare class LogsReader extends EventEmitter {
     #private;
@@ -307,4 +420,4 @@ declare class LogsReader extends EventEmitter {
     close(): Promise<void>;
 }
 
-export { LogsReader, LogsReaderEvents, type TAdminBroadcast, type TApplyExplosiveDamage, type TDeployableDamaged, type TGrenadeSpawned, type TLogReaderOptions, type TNewGame, type TNotifyAcceptingConnection, type TPlayerConnected, type TPlayerDamaged, type TPlayerDied, type TPlayerDisconnected, type TPlayerPossess, type TPlayerRevived, type TPlayerSuicide, type TPlayerUnpossess, type TPlayerWounded, type TPlayfabRoundSummary, type TRoundEnded, type TRoundTickets, type TRoundWinner, type TSquadCreated, type TTickRate, type TVehicleDamaged };
+export { LogsReader, LogsReaderEvents, type TAdminAction, type TAdminBroadcast, type TApplyExplosiveDamage, type TDeployableDamaged, type TEacAction, type TFobPlaced, type TGrenadeSpawned, type TLogReaderOptions, type TMatchResult, type TNewGame, type TNextLayerSet, type TNotifyAcceptingConnection, type TPlayerConnected, type TPlayerDamaged, type TPlayerDied, type TPlayerDisconnected, type TPlayerPossess, type TPlayerRespawn, type TPlayerRevived, type TPlayerStateChanged, type TPlayerSuicide, type TPlayerUnpossess, type TPlayerWounded, type TPlayfabRoundSummary, type TRallyPlaced, type TRoundEnded, type TRoundTickets, type TRoundWinner, type TSquadCreated, type TTickRate, type TVehicleDamaged, type TVehicleSeatChange };

@@ -21,4 +21,13 @@ export declare const LogsReaderEvents: {
     VEHICLE_DAMAGED: string;
     TICK_RATE: string;
     ROUND_SUMMARY: string;
+    FOB_PLACED: string;
+    RALLY_PLACED: string;
+    PLAYER_RESPAWN: string;
+    VEHICLE_SEAT_CHANGE: string;
+    EAC_ACTION: string;
+    PLAYER_STATE_CHANGED: string;
+    MATCH_RESULT: string;
+    NEXT_LAYER_SET: string;
+    ADMIN_ACTION: string;
 };
