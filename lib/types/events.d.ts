@@ -1,4 +1,8 @@
 export declare const LogsReaderEvents: {
+    CAPTURE_ZONE_CAPTURED: string;
+    CAPTURE_ZONE_NEUTRALIZED: string;
+    MAP_MARKER_PLACED: string;
+    DEPLOYABLE_SPAWNED: string;
     ADMIN_BROADCAST: string;
     DEPLOYABLE_DAMAGED: string;
     GRENADE_SPAWNED: string;

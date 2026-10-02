@@ -4,6 +4,10 @@ import SFTPClient from 'ssh2-sftp-client';
 import { Tail } from 'tail';
 
 declare const LogsReaderEvents: {
+    CAPTURE_ZONE_CAPTURED: string;
+    CAPTURE_ZONE_NEUTRALIZED: string;
+    MAP_MARKER_PLACED: string;
+    DEPLOYABLE_SPAWNED: string;
     ADMIN_BROADCAST: string;
     DEPLOYABLE_DAMAGED: string;
     GRENADE_SPAWNED: string;
@@ -393,6 +397,41 @@ type TAdminAction = {
     squadName?: string;
     event: string;
 };
+type TWorldActivityBase = {
+    raw: string;
+    time: string;
+    chainID: string;
+    event: string;
+};
+type TCaptureZone = TWorldActivityBase & {
+    flagName: string;
+    teamID: number;
+    previousTeamID: number | null;
+};
+type TMapMarkerPlaced = TWorldActivityBase & {
+    name: string;
+    eosID: string | null;
+    steamID: string | null;
+    epicID: string | null;
+    teamID: number;
+    markerTeamID: number;
+    markerType: string;
+    x: number;
+    y: number;
+    z: number;
+};
+type TDeployableSpawned = TWorldActivityBase & {
+    deployable: string;
+    teamID: number;
+    x: number;
+    y: number;
+    z: number;
+    name: string | null;
+    playerID: string | null;
+    eosID: string | null;
+    steamID: string | null;
+    epicID: string | null;
+};
 
 declare class LogsReader extends EventEmitter {
     #private;
@@ -420,4 +459,6 @@ declare class LogsReader extends EventEmitter {
     close(): Promise<void>;
 }
 
-export { LogsReader, LogsReaderEvents, type TAdminAction, type TAdminBroadcast, type TApplyExplosiveDamage, type TDeployableDamaged, type TEacAction, type TFobPlaced, type TGrenadeSpawned, type TLogReaderOptions, type TMatchResult, type TNewGame, type TNextLayerSet, type TNotifyAcceptingConnection, type TPlayerConnected, type TPlayerDamaged, type TPlayerDied, type TPlayerDisconnected, type TPlayerPossess, type TPlayerRespawn, type TPlayerRevived, type TPlayerStateChanged, type TPlayerSuicide, type TPlayerUnpossess, type TPlayerWounded, type TPlayfabRoundSummary, type TRallyPlaced, type TRoundEnded, type TRoundTickets, type TRoundWinner, type TSquadCreated, type TTickRate, type TVehicleDamaged, type TVehicleSeatChange };
+declare const parseLine: (line: string, emitter: EventEmitter) => void;
+
+export { LogsReader, LogsReaderEvents, type TAdminAction, type TAdminBroadcast, type TApplyExplosiveDamage, type TCaptureZone, type TDeployableDamaged, type TDeployableSpawned, type TEacAction, type TFobPlaced, type TGrenadeSpawned, type TLogReaderOptions, type TMapMarkerPlaced, type TMatchResult, type TNewGame, type TNextLayerSet, type TNotifyAcceptingConnection, type TPlayerConnected, type TPlayerDamaged, type TPlayerDied, type TPlayerDisconnected, type TPlayerPossess, type TPlayerRespawn, type TPlayerRevived, type TPlayerStateChanged, type TPlayerSuicide, type TPlayerUnpossess, type TPlayerWounded, type TPlayfabRoundSummary, type TRallyPlaced, type TRoundEnded, type TRoundTickets, type TRoundWinner, type TSquadCreated, type TTickRate, type TVehicleDamaged, type TVehicleSeatChange, type TWorldActivityBase, parseLine };

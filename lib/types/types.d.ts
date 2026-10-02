@@ -348,3 +348,38 @@ export type TAdminAction = {
     squadName?: string;
     event: string;
 };
+export type TWorldActivityBase = {
+    raw: string;
+    time: string;
+    chainID: string;
+    event: string;
+};
+export type TCaptureZone = TWorldActivityBase & {
+    flagName: string;
+    teamID: number;
+    previousTeamID: number | null;
+};
+export type TMapMarkerPlaced = TWorldActivityBase & {
+    name: string;
+    eosID: string | null;
+    steamID: string | null;
+    epicID: string | null;
+    teamID: number;
+    markerTeamID: number;
+    markerType: string;
+    x: number;
+    y: number;
+    z: number;
+};
+export type TDeployableSpawned = TWorldActivityBase & {
+    deployable: string;
+    teamID: number;
+    x: number;
+    y: number;
+    z: number;
+    name: string | null;
+    playerID: string | null;
+    eosID: string | null;
+    steamID: string | null;
+    epicID: string | null;
+};
